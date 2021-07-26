@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+import rospy
+from geometry_msgs.msg import PoseWithCovarianceStamped
+from visualization_msgs.msg import Marker
+
+def publisher():
+    pub = rospy.Publisher('initialpose', PoseWithCovarianceStamped, queue_size=1)
+    pub_mark = rospy.Publisher("pose_marker", Marker,queue_size=1)
+    rospy.init_node('init_pose_publisher', anonymous=True)
+    counter = 0
+    rate = rospy.Rate(1) # Hz
+    while not counter > 5:
+        marker = Marker()
+        marker.header.frame_id = "/map"
+        marker.type = marker.TEXT_VIEW_FACING
+        marker.text = "INITIAL_POS"
+        marker.action = marker.ADD
+        marker.scale.x = 0.3
+        marker.scale.y = 0.3
+        marker.scale.z = 0.3
+        marker.color.a = 1.0
+        marker.color.r = 1.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.pose.orientation.w = 1.0
+        marker.pose.position.x = (rospy.get_param('/initial_pose_x',0.0) + 1.0)
+        marker.pose.position.y = rospy.get_param('/initial_pose_y',0.0)
+        marker.pose.position.z = 1.0
+
+
+        arrow = Marker()
+        arrow.header.frame_id = "/map"
+        arrow.type = arrow.ARROW
+        arrow.action = arrow.ADD
+        arrow.scale.x = 0.5
+        arrow.scale.y = 0.1
+        arrow.scale.z = 0.1
+        arrow.color.a = 1.0
+        arrow.color.r = 1.0
+        arrow.color.g = 1.0
+        arrow.color.b = 0.0
+        arrow.pose.position.x = (rospy.get_param('/initial_pose_x',0.0) + 1.0)
+        arrow.pose.position.y = rospy.get_param('/initial_pose_y',0.0)
+        arrow.pose.position.z = 1.0
+        '''vertially point to the screen
+        arrow.pose.orientation.x = 0.0
+        arrow.pose.orientation.y = 0.707
+        arrow.pose.orientation.z = 0
+        arrow.pose.orientation.w = 0.707'''
+        arrow.pose.orientation.x = 0.0
+        arrow.pose.orientation.y = 0.0
+        arrow.pose.orientation.z = 1.0
+        arrow.pose.orientation.w = 0.0
+
+        p = PoseWithCovarianceStamped()
+        p.header.stamp = rospy.get_rostime()
+        p.header.frame_id = "map"
+        p.pose.pose.position.x = rospy.get_param('/initial_pose_x',2.0)
+        p.pose.pose.position.y = rospy.get_param('/initial_pose_y',-0.2)
+        p.pose.pose.position.z = rospy.get_param('/initial_pose_z',0.0)
+        # Make sure the quaternion is valid and normalized
+        p.pose.pose.orientation.x = rospy.get_param('/initial_orientation_x',0.0)
+        p.pose.pose.orientation.y = rospy.get_param('/initial_orientation_y',0.0)
+        p.pose.pose.orientation.z = rospy.get_param('/initial_orientation_z',-0.03)
+        p.pose.pose.orientation.w = rospy.get_param('/initial_orientation_w',1.0)
+        p.pose.covariance = [0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.06853891945200942]
+        pub.publish(p)
+        pub_mark.publish(marker)
+        rate.sleep()
+        counter+=1
+
+if __name__ == '__main__':
+    try:
+        publisher()
+    except rospy:
+        pass

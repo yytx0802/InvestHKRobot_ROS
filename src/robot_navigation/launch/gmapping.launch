@@ -1,0 +1,15 @@
+<launch>
+
+  <include file="$(find ada_test)/launch/ada_imu_board.launch"/>
+
+  <include file="$(find robot_navigation)/launch/include/gmapping.launch.xml">
+    <arg name="scan_topic"  value="scan_filtered" /> <!-- scan_filtered   -->
+    <remap from="scan" to="scan_filtered" />
+  </include>
+
+  
+  <!--include file="$(find urg_node)/launch/urg_lidar.launch"/-->
+  
+  <include file="$(find robot_navigation)/launch/test_s1.launch"/>  
+  <node name="rviz" pkg="rviz" type="rviz" args="" />
+</launch>

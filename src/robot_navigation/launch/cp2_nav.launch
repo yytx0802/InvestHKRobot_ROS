@@ -1,0 +1,30 @@
+<launch>
+
+  <param name="initial_pose_x" value="2.13"/>
+  <param name="initial_pose_y" value="-0.78"/>
+  <param name="initial_pose_z" value=" 0.0"/>
+  <param name="initial_orientation_x" value="0.0"/>
+  <param name="initial_orientation_y" value="0.0"/>
+  <param name="initial_orientation_z" value="0.18"/>
+  <param name="initial_orientation_w" value="0.98"/>
+
+  <include file="$(find ada_test)/launch/ada_imu_board.launch"/>
+  <arg name="map_name" default="cp0002.yaml" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_navigation)/maps/$(arg map_name)"/>
+<!--  <include file="$(find urg_node)/launch/urg_lidar.launch"/> -->
+  <include file="$(find robot_navigation)/launch/test_s1.launch"/>  
+  <include file="$(find robot_navigation)/launch/include/move_base.launch.xml" />
+
+  <include file="$(find robot_navigation)/launch/include/amcl.launch.xml">    
+     <arg name="scan_topic" value="scan_filtered"/> 
+     <param name="laser_max_range" value="30.0"/>
+  </include>
+  <!--node name="rviz" pkg="rviz" type="rviz" args="" /-->
+  <node name="clear_map" pkg="ada_test" type="clear_map"/>
+  <node name="reset_odom" pkg="ada_test" type="reset_odom"/>
+  <node name="publish_init_pose" pkg="robot_navigation" type="publish_init_pose"/>
+  <node name="serial_connect_battery" pkg="rosserial_python" type="serial_node.py" >
+    <param name="port" value="/dev/battery"/>
+    <param name="baud" value="115200"/>
+  </node>
+</launch>

@@ -1,0 +1,6 @@
+<launch>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_navigation)/maps/map2.yaml" launch-prefix="xterm -e gdb --args"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_navigation)/rviz/test_rviz.rviz" />
+   <node pkg="tf" type="static_transform_publisher" name="map_tf" 
+    args="0.0 0.0 0.0 0.0  0.0 0.0 /map /base_link 30" /> 
+</launch>
