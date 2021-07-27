@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find rplidar_ros)/launch/rplidar_s1.launch"/>  
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
+        <rosparam command="load" file="$(find whbot_navigation)/params/laser_filter_params.yaml" />
+  </node>
+</launch>
+
