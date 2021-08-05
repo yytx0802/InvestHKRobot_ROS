@@ -82,6 +82,17 @@ before_install:
   # Prepare rosdep to install dependencies.
   - sudo rosdep init
   - rosdep update --include-eol-distros  # Support EOL distros.
+  - apt-get install -qq ros-${ROS_DISTRO}-desktop-full >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-navigation >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-gmapping >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-joy >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-laser-proc >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-urg-c >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-ecl >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-rosserial-python  >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-rosbridge-suite >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-robot-upstart >/dev/null
+  - apt-get install -qq ros-${ROS_DISTRO}-bfl >/dev/null
 
 # Create a catkin workspace with the package under integration.
 install:
