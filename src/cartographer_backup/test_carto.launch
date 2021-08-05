@@ -1,0 +1,10 @@
+<launch>
+
+
+  <include file="$(find ada_test)/launch/ada_imu_board.launch"/>
+  <include file="$(find whbot_navigation)/launch/test_s1.launch"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="" />
+  <node name="reset_odom" pkg="ada_test" type="reset_odom"/>
+
+</launch>
+
