@@ -8,7 +8,7 @@
   <param name="initial_orientation_z" value="0.18"/>
   <param name="initial_orientation_w" value="0.98"/>
 
-  <include file="$(find ada_test)/launch/ada_imu_board.launch"/>
+  <include file="$(find robot_control)/launch/robot_imu_board.launch"/>
   <arg name="map_name" default="cp0002.yaml" />
   <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_navigation)/maps/$(arg map_name)"/>
 <!--  <include file="$(find urg_node)/launch/urg_lidar.launch"/> -->
@@ -20,8 +20,8 @@
      <param name="laser_max_range" value="30.0"/>
   </include>
   <!--node name="rviz" pkg="rviz" type="rviz" args="" /-->
-  <node name="clear_map" pkg="ada_test" type="clear_map"/>
-  <node name="reset_odom" pkg="ada_test" type="reset_odom"/>
+  <node name="clear_map" pkg="robot_control" type="clear_map"/>
+  <node name="reset_odom" pkg="robot_control" type="reset_odom"/>
   <node name="publish_init_pose" pkg="robot_navigation" type="publish_init_pose"/>
   <node name="serial_connect_battery" pkg="rosserial_python" type="serial_node.py" >
     <param name="port" value="/dev/battery"/>

@@ -1,0 +1,11 @@
+<launch>
+    <rosparam command="load" file="$(find robot_control)/params/rotate_param.yaml" />
+    <node name="ar_rotate_handler_server" pkg="robot_control" type="ar_rotate_handler_server.py" output="screen"/>
+    <!-- node name="ar_rotate_handler_client" pkg="robot_control" type="ar_rotate_handler_client.py"/-->
+    <node name="check_angular" pkg="robot_control" type="check_angular.py">
+        <param name="start_test" value="False"/>
+    </node>
+
+</launch>
+
+
