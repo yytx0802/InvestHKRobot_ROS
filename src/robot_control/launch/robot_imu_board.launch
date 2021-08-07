@@ -16,7 +16,7 @@
   </node>
   <node name="odom_add_time" pkg="robot_control" type="odom_add_time" />
   <node name="serial_connect" pkg="rosserial_python" type="serial_node.py" >
-    <param name="port" value="/dev/whbot"/>
+    <param name="port" value="/dev/robot"/>
     <param name="baud" value="115200"/>
   </node>
   <include file="$(find wit_node)/launch/wit.launch"/>
