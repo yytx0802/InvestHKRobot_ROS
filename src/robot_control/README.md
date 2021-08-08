@@ -3,12 +3,17 @@
 ### Install necessary dependencies
 
 ```sh
-$ sudo apt install ros-kinetic-laser-proc
-$ sudo apt install ros-kinetic-urg-c
-$ sudo apt install ros-kinetic-navigation
-$ sudo apt install ros-kinetic-bfl
-$ sudo apt install ros-kinetic-ecl
-
+$ sudo apt-get install -y ros-${ROS_DISTRO}-desktop-full
+$ sudo apt-get install -y ros-${ROS_DISTRO}-navigation
+$ sudo apt-get install -y ros-${ROS_DISTRO}-gmapping 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-joy 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-laser-proc 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-urg-c 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-ecl 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-rosserial-python 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-rosbridge-suite 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-robot-upstart 
+$ sudo apt-get install -y ros-${ROS_DISTRO}-bfl 
 ```
 ### In your catkin workspace
 

@@ -8,7 +8,7 @@ from math import radians, copysign
 import PyKDL
 from math import pi
 from dynamic_reconfigure.server import Server   #NEW ADDED
-from ada_test.cfg import CalibrateAngularConfig   #NEW ADDED
+from robot_control.cfg import CalibrateAngularConfig   #NEW ADDED
 
 
 def quat_to_angle(quat):

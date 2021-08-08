@@ -107,7 +107,7 @@ generate_dynamic_reconfigure_options(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES ada_test
+#  LIBRARIES robot_control
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -125,7 +125,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/ada_test.cpp
+#   src/${PROJECT_NAME}/robot_control.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -214,7 +214,7 @@ target_link_libraries(bing_multi  ${catkin_LIBRARIES})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_ada_test.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/robot_control.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

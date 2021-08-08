@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
-#include <ada_test/ArRotateHandlerAction.h>
+#include <robot_control/ArRotateHandlerAction.h>
 
 int main (int argc, char **argv)
 {
@@ -17,7 +17,7 @@ int main (int argc, char **argv)
 
   ROS_INFO("Action server started, sending goal.");
   // send a goal to the action
-  ada_test::ArRotateHandlerGoal goal;
+  robot_control::ArRotateHandlerGoal goal;
   //goal.order = 20;
   ac.sendGoal(goal);
 

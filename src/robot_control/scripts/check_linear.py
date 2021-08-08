@@ -26,7 +26,7 @@ from geometry_msgs.msg import Twist, Point
 from math import copysign, sqrt, pow
 from dynamic_reconfigure.server import Server
 import dynamic_reconfigure.client
-#from ada_test.cfg import CalibrateLinearConfig
+#from robot_control.cfg import CalibrateLinearConfig
 import tf
 
 class CalibrateLinear():

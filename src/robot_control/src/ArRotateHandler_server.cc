@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <actionlib/server/simple_action_server.h>
-#include <ada_test/ArRotateHandlerAction.h>
+#include <robot_control/ArRotateHandlerAction.h>
 
 class ArRotateHandlerAction
 {
@@ -10,8 +10,8 @@ protected:
   actionlib::SimpleActionServer<robot_control::ArRotateHandlerAction> as_; // NodeHandle instance must be created before this line. Otherwise strange error occurs.
   std::string action_name_;
   // create messages that are used to published feedback/result
-  ada_test::ArRotateHandlerFeedback feedback_;
-  ada_test::ArRotateHandlerResult result_;
+  robot_control::ArRotateHandlerFeedback feedback_;
+  robot_control::ArRotateHandlerResult result_;
 
 public:
 
@@ -26,7 +26,7 @@ public:
   {
   }
 
-  void executeCB(const ada_test::ArRotateHandlerGoalConstPtr &goal)
+  void executeCB(const robot_control::ArRotateHandlerGoalConstPtr &goal)
   {
     // helper variables
     ros::Rate r(2);
