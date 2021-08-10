@@ -1,6 +1,6 @@
 <launch>
 
-  <include file="$(find robot_control)/launch/ada_imu_board.launch"/>
+  <include file="$(find robot_control)/launch/robot_imu_board.launch"/>
 
   <include file="$(find robot_navigation)/launch/include/gmapping.launch.xml">
     <arg name="scan_topic"  value="scan_filtered" /> <!-- scan_filtered   -->

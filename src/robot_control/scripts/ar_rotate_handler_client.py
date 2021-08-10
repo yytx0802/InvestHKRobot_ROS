@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import sys
 import rospy
-from ada_test.srv import *
+from robot_control.srv import *
 import rosgraph
 
 def ar_rotate_handler_client():

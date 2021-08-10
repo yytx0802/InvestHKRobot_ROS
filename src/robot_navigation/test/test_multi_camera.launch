@@ -38,7 +38,7 @@
       <arg name="publish_odom_tf"        value="false"/>
       <arg name="enable_color"        value="true"/> 
    </include> 
-   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find whbot_navigation)/rviz/test_cam.rviz" />
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_navigation)/rviz/test_cam.rviz" />
 
 
   <node name="cameraR_converter" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" >

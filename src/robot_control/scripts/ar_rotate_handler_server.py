@@ -6,7 +6,7 @@ import tf
 from std_msgs.msg import String
 from fiducial_msgs.msg import FiducialTransformArray, FiducialTransform
 from geometry_msgs.msg import Transform
-from ada_test.srv import ArRotateHandler, ArRotateHandlerResponse
+from robot_control.srv import ArRotateHandler, ArRotateHandlerResponse
 #from __future__ import print_function
 
 

@@ -1,7 +1,7 @@
 <launch>
 
   <node name="serial_connect" pkg="rosserial_python" type="serial_node.py" >
-    <param name="port" value="/dev/whbot"/>
+    <param name="port" value="/dev/robot"/>
     <param name="baud" value="115200"/>
   </node>
   
