@@ -223,10 +223,11 @@ target_link_libraries(bing_multi  ${catkin_LIBRARIES})
 # catkin_add_nosetests(test)
 
 catkin_install_python(PROGRAMS   
-  scripts/check_angular.py
-  scripts/check_linear.py
-  scripts/teleop_twist_keyboard.py
+  scripts/check_angular
+  scripts/check_linear
+  scripts/teleop_twist_keyboard
   scripts/multi_nav
+  scripts/publish_pose
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
