@@ -151,6 +151,8 @@ target_link_libraries(reset_odom ${catkin_LIBRARIES} )
 add_executable(bing_multi src/bing_multi.cc)
 target_link_libraries(bing_multi  ${catkin_LIBRARIES})
 
+add_executable(amcl_pose_publisher src/amcl_pose_publisher.cc)
+target_link_libraries(amcl_pose_publisher  ${catkin_LIBRARIES})
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
