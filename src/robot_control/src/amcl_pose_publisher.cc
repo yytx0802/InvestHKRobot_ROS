@@ -18,11 +18,11 @@ int main(int argc, char** argv){
   while (node.ok()){
     geometry_msgs::TransformStamped transformStamped;
     try{
-      transformStamped = tfBuffer.lookupTransform("odom", "base_link",
+      transformStamped = tfBuffer.lookupTransform("map", "odom",
                                ros::Time(0));
     }
     catch (tf2::TransformException &ex) {
-      ROS_WARN("%s",ex.what());
+      //ROS_WARN("%s",ex.what());
       ros::Duration(1.0).sleep();
       continue;
     }
