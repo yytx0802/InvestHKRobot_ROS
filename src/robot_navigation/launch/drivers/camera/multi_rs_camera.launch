@@ -1,0 +1,49 @@
+<launch>
+<group ns="cameraL"> 
+  <node pkg="nodelet" type="nodelet" name="realsense2_camera_manager"  args="manager" output="screen" required="false" respawn="true"/>
+  <node pkg="nodelet" type="nodelet" name="cameraL_converter" args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet realsense2_camera_manager" >
+    <param name="scan_height" value="1"/>  <!--The number of pixel rows to use to generate the laserscan-->
+    <!--param name="scan_time" value="115200"/-->
+    <param name="range_min" value="0.35"/>
+    <param name="range_max " value="2.5"/>
+    <param name="output_frame_id " value="cameraL_depth_frame"/>  
+    <remap from="image" to="depth/image_rect_raw"/>
+    <remap from="camera_info" to="depth/camera_info"/>
+  </node>
+</group>
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="camera"           value="cameraL"/>
+    <arg name="serial_no"        value="046222071577"/>
+    <arg name="filters"          value="pointcloud"/>
+    <arg name="initial_reset"        value="true"/>
+    <arg name="publish_odom_tf"        value="false"/>
+    <arg name="enable_color"        value="false"/>
+    <arg name="external_manager"        value="true"/>
+    <arg name="manager"        value="realsense2_camera_manager"/>
+  </include>
+
+<group ns="cameraR"> 
+  <node pkg="nodelet" type="nodelet" name="realsense2_camera_manager"  args="manager" output="screen" required="false" respawn="true"/>
+  <node pkg="nodelet" type="nodelet" name="cameraR_converter" args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet realsense2_camera_manager" >
+    <param name="scan_height" value="1"/>  <!--The number of pixel rows to use to generate the laserscan-->
+    <!--param name="scan_time" value="115200"/-->
+    <param name="range_min" value="0.35"/>
+    <param name="range_max " value="2.5"/>
+    <param name="output_frame_id " value="cameraR_depth_frame"/>  
+    <remap from="image" to="depth/image_rect_raw"/>
+    <remap from="camera_info" to="depth/camera_info"/>
+  </node>
+</group>
+
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="camera"           value="cameraR"/>
+    <arg name="serial_no"        value="047322071391"/>
+    <arg name="filters"          value="pointcloud"/>
+    <arg name="initial_reset"        value="true"/>
+    <arg name="publish_odom_tf"        value="false"/>
+    <arg name="enable_color"        value="false"/>
+    <arg name="external_manager"        value="true"/>
+    <arg name="manager"        value="realsense2_camera_manager"/>
+  </include>
+</launch>
+
