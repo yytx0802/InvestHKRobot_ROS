@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/lscm/InvestHKRobot_ROS/devel/include/**",
+        "/home/lscm/investhkrobot_ros/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/lscm/investhkrobot_ros/src/robot_pose_ekf/include/**",
+        "/home/lscm/InvestHKRobot_ROS/src/urg_node/include/**",
+        "/home/lscm/InvestHKRobot_ROS/src/wit_node/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "cStandard": "c11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
