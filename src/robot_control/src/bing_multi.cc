@@ -1,4 +1,4 @@
-// Copyright 2021 BING
+// Copyright 2021 LSCM
 #include <ros/ros.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <move_base_msgs/MoveBaseActionFeedback.h>
@@ -40,11 +40,11 @@ class Multigoal {
     bool flag_loop = true;
     bool flag_reached = false;
     bool flag_sended = false;
-    explicit Multigoal(ros::NodeHandle nh):goal_id_(0),
-        goal_count_(0), goal_stat_(0);
+    explicit Multigoal(ros::NodeHandle nh);
     ~Multigoal();
 };
-Multigoal::Multigoal(ros::NodeHandle nh) {
+Multigoal::Multigoal(ros::NodeHandle nh) :goal_id_(0),
+        goal_count_(0), goal_stat_(0) {
   // goal_id_ = 0;
   // goal_count_ = 0;
   // goal_stat_ = 0;
@@ -54,7 +54,7 @@ Multigoal::Multigoal(ros::NodeHandle nh) {
   gas_pub_ = nh.advertise<std_msgs::Int8>("stm_disinfector_control", 10);
   getGoals();
   MoveBaseClient ac("/move_base", true);
-  while (!ac.waitForServer(ros::Duration(5.0))) {
+  while (ros::ok() && !ac.waitForServer(ros::Duration(5.0))) {
     ROS_INFO("Waiting for the move_base action server to come up");
   }
   while (ros::ok()) {
